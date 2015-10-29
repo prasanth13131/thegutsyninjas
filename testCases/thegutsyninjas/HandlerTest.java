@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Test {
+public class HandlerTest {
 	
 	@Test
 	public void testFetchLatLong_null() {

@@ -2,3 +2,4 @@ applications:
 - name: thegutsyninjas
   memory: 1G
   buildpack: java_buildpack
+  path: ./thegutsyninja.war

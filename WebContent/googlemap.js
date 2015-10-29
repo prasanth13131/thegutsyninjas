@@ -1,6 +1,13 @@
-
+var map;
 
 function initialize() {
+	 var latlng = new google.maps.LatLng(-34.397, 150.644);
+	var mapProp = {
+			center:latlng,
+		    zoom:14,
+		    mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+	map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 	if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
     } else { 
@@ -9,16 +16,10 @@ function initialize() {
 }
 
 function showPosition(position) {
-    //alert(position.coords.latitude+' , '+position.coords.longitude);
-    //'38.9847719','-77.5619419' - guindy
+   
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-    var mapProp = {
-		    center:latlng,
-		    zoom:15,
-		    mapTypeId:google.maps.MapTypeId.ROADMAP
-		  };
     
-    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    map.setCenter(latlng);
     
     new google.maps.InfoWindow({
    	   content:'Bob Marley'
@@ -35,7 +36,7 @@ function showPosition(position) {
 		 
 		 var myCircle = new google.maps.Circle({
 		 	   center:latlng,
-		 	   radius:500,
+		 	   radius:1000,
 		 	   strokeColor:"#0000FF",
 		 	   strokeOpacity:0.8,
 		 	   strokeWeight:2,

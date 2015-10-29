@@ -1,3 +1,9 @@
+<%@ page import="com.thegutsyninjas.*" %>
+
+<%
+  DBOperation db = new DBOperation();
+ %>
+ 
 <html>
 <head>
 	<meta charset="utf-8">
@@ -21,7 +27,7 @@
 <div data-role="page" data-theme="c">
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>
-    <h1>vDispatch</h1>
+    <h1>vDispatch (<%=db.getCustomerName()%>)</h1>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Search</a>
   </div>
 

@@ -32,7 +32,7 @@ function showPosition(position) {
        	   content:'Radhika'
        	   }).open(map,new google.maps.Marker({position: {lat: 13.007440, lng: 80.201234}, map: map}));
 		 new google.maps.InfoWindow({
-       	   content:'Babu'
+       	   content:'Babuji'
        	   }).open(map,new google.maps.Marker({position: {lat: 13.013196, lng: 80.203601}, map: map}));
 		 
 		 	myCircle = new google.maps.Circle({

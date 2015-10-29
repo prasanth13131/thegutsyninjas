@@ -15,7 +15,7 @@ public class DBOperation {
 			System.out.println("conn  ==>"+conn);
 			Statement st = conn.createStatement(); 
 			System.out.println("st  ==>"+st);
-			ResultSet res = st.executeQuery("SELECT FIRST_NAME FROM ENGINEER WHERE ID=1"); 
+			ResultSet res = st.executeQuery("SELECT FIRST_NAME FROM ENGINEER WHERE RECORD_ID=1"); 
 			System.out.println("res  ==>"+res);
 			while (res.next()) { 
 				name = res.getString("FIRST_NAME");

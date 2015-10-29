@@ -10,8 +10,8 @@ public class DBOperation {
 
 	public String getCustomerName(){
 		String name = null;
+		Connection conn = SQLManager.openConnection();
 		try {
-			Connection conn = SQLManager.openConnection();
 			System.out.println("conn  ==>"+conn);
 			Statement st = conn.createStatement(); 
 			System.out.println("st  ==>"+st);
@@ -22,6 +22,8 @@ public class DBOperation {
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			SQLManager.closeConnection(conn);
 		}
 		return name;
 	}

@@ -1,4 +1,5 @@
 var map;
+var myCircle;
 
 function initialize() {
 	 var latlng = new google.maps.LatLng(-34.397, 150.644);
@@ -34,7 +35,7 @@ function showPosition(position) {
        	   content:'Babu'
        	   }).open(map,new google.maps.Marker({position: {lat: 13.013196, lng: 80.203601}, map: map}));
 		 
-		 var myCircle = new google.maps.Circle({
+		 	myCircle = new google.maps.Circle({
 		 	   center:latlng,
 		 	   radius:1000,
 		 	   strokeColor:"#0000FF",

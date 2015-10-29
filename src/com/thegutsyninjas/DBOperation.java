@@ -3,8 +3,8 @@ package com.thegutsyninjas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-import com.mysql.jdbc.Statement;
 
 public class DBOperation {
 
@@ -13,7 +13,7 @@ public class DBOperation {
 		try {
 			Connection conn = SQLManager.openConnection();
 			System.out.println("conn  ==>"+conn);
-			Statement st = (Statement) conn.createStatement(); 
+			Statement st = conn.createStatement(); 
 			System.out.println("st  ==>"+st);
 			ResultSet res = st.executeQuery("SELECT FIRST_NAME FROM ENGINEER WHERE ID=1"); 
 			System.out.println("res  ==>"+res);

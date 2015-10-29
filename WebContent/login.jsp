@@ -30,14 +30,14 @@
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Search</a>
   </div>
 
-  <div data-role="main" class="ui-content" id="login" style="width:100%;height:380px;">
+  <div data-role="main" class="ui-content" id="login" style="width:100%;height:150px;">
     <input type="text" id="loginpin" maxlength=4 size=5></input>
   </div>
 
   <div data-role="footer">
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Active</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">In Queue</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Pending</a>
+<div style="text-align:center">
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">Login</a>
+</div>
   </div>
 </div>
 

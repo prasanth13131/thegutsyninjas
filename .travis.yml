@@ -3,10 +3,14 @@ script: ant main
 
 
 deploy:
-   edge: true
-   provider: cloudfoundry
-   username: prasanth.mathew.2007@gmail.com
-   password: ilikepivotal13
-   api: https://api.run.pivotal.io
-   organization: thegutsyninjas.hack
-   space: development
+  provider:
+    provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: prasanth.mathew.2007@gmail.com
+  password: ilikepivotal13
+  organization: thegutsyninjas.hack
+  space: development
+  edge: true
+  on:
+    repo: prasanth13131/thegutsyninjas
+    branch: 'master'

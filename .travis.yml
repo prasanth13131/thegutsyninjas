@@ -1,7 +1,6 @@
 language: java
 script: ant main
 
-
 deploy:
   provider: cloudfoundry
   api: https://api.run.pivotal.io

@@ -9,17 +9,9 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	
+	<script src="googlemap.js"></script>
 	<script>
-			function initialize() {
-			  var mapProp = {
-			    center:new google.maps.LatLng(51.508742,-0.120850),
-			    zoom:5,
-			    mapTypeId:google.maps.MapTypeId.ROADMAP
-			  };
-			  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-			}
-			google.maps.event.addDomListener(window, 'load', initialize);
+			
 	</script>
 
 </head>

@@ -9,11 +9,11 @@ function initialize() {
 
     
 function showPosition(position) {
-    alert(position.coords.latitude+' , '+position.coords.longitude);
+    //alert(position.coords.latitude+' , '+position.coords.longitude);
     //'38.9847719','-77.5619419' - guindy
     var mapProp = {
 		    center:new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-		    zoom:5,
+		    zoom:15,
 		    mapTypeId:google.maps.MapTypeId.ROADMAP
 		  };
     

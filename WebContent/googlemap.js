@@ -1,5 +1,7 @@
 var map;
 var myCircle;
+var markers = [];
+
 
 function initialize() {
 	//alert('hi');
@@ -22,6 +24,7 @@ function initialize() {
 	 	 	});
 	
 	myCircle.setMap(map);
+	showEngineers("ALL");
 			 
 	if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
@@ -34,22 +37,81 @@ function showPosition(position) {
    
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
    
-    new google.maps.InfoWindow({
-   	   content:'Bob Marley'
-   	   }).open(map,new google.maps.Marker({position: {lat: 13.003196, lng: 80.200601}, map: map}));
-		 new google.maps.InfoWindow({
-       	   content:'Arumugam'
-       	   }).open(map,new google.maps.Marker({position: {lat: 13.006102, lng: 80.203112}, map: map}));
-		 new google.maps.InfoWindow({
-       	   content:'Radhika'
-       	   }).open(map,new google.maps.Marker({position: {lat: 13.007440, lng: 80.201234}, map: map}));
-		 new google.maps.InfoWindow({
-       	   content:'Babuji'
-       	   }).open(map,new google.maps.Marker({position: {lat: 13.013196, lng: 80.203601}, map: map}));
-		 
+//    new google.maps.InfoWindow({
+//   	   content:'Bob Marley'
+//   	   }).open(map,new google.maps.Marker({position: {lat: 13.003196, lng: 80.200601}, map: map}));
+//		 new google.maps.InfoWindow({
+//       	   content:'Arumugam'
+//       	   }).open(map,new google.maps.Marker({position: {lat: 13.006102, lng: 80.203112}, map: map}));
+//		 new google.maps.InfoWindow({
+//       	   content:'Radhika'
+//       	   }).open(map,new google.maps.Marker({position: {lat: 13.007440, lng: 80.201234}, map: map}));
+//		 new google.maps.InfoWindow({
+//       	   content:'Babuji'
+//       	   }).open(map,new google.maps.Marker({position: {lat: 13.013196, lng: 80.203601}, map: map}));
+//		 
 		map.setCenter(latlng);
 		myCircle.setCenter(latlng);
 		 
 }
+
+function showEngineers(type)
+{
+	
+	$.ajax({
+	url: 'fetchEngineeersAction.jsp',
+	type: 'GET',
+	data: {enggType: type,ajaxReq: "fetchEngineers"},
+	dataType: 'application/Json',
+	error: function(){
+		hideProgressbar();
+		alert('No Engineers available');
+		
+	}  
+	}).done(function(engineers)
+			{
+				
+		for(i=0;i<engineers.length;i++)
+			{
+			addMarker( new google.maps.LatLng(engineers[i].LATITUDE,engineers[i].LONGITUDE));
+			}
+			showMarkers();
+			});
+	
+	}
+
+
+//Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
+
+//Adds a marker to the map and push to the array.
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  markers.push(marker);
+}
+
 
 google.maps.event.addDomListener(window, 'load', initialize);

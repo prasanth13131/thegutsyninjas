@@ -37,19 +37,19 @@ public class DBOperation {
 		String query="SELECT RECORD_ID,FIRST_NAME,LAST_NAME,EXPERT_IN,LATITUDE,LONGITUDE,STATUS FROM ENGINEER";
 		if(type.equalsIgnoreCase("FIOS"))
 		{
-			query+=" WHERE TYPE='FIOS'";
+			query+=" WHERE EXPERT_IN='FIOS'";
 		}
 		else if(type.equalsIgnoreCase("TV"))
 		{
-			query+=" WHERE TYPE='TV'";
+			query+=" WHERE EXPERT_IN='TV'";
 		}
 		else if(type.equalsIgnoreCase("VOICE"))
 		{
-			query+=" WHERE TYPE='VOICE'";
+			query+=" WHERE EXPERT_IN='VOICE'";
 		}
 		else if(type.equalsIgnoreCase("INTE"))
 		{
-			query+=" WHERE TYPE='INTE'";
+			query+=" WHERE EXPERT_IN='INTE'";
 		}
 		Connection conn = SQLManager.openConnection();
 		try {

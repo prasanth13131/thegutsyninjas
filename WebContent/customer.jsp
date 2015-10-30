@@ -48,10 +48,10 @@
   </div>
 
   <div data-role="footer"><center>
-    <a href="#" id="FIOS" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Fios<img src="images/FIOS.png" width=18 height=16></a>
-    <a href="#" id="TV" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Tv<img src="images/TV.png" width=22 height=20></a>
-    <a href="#" id="VOICE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Voice<img src="images/VOICE.png" width=15 height=18></a>
-	<a href="#" id="INTE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Internet<img src="images/INTE.png" width=18 height=16></a></center>
+    <a href="#" id="FIOS" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Fios<img src="images/FIOS.png"></a>
+    <a href="#" id="TV" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Tv<img src="images/TV.png"></a>
+    <a href="#" id="VOICE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Voice<img src="images/VOICE.png"></a>
+	<a href="#" id="INTE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Internet<img src="images/INTE.png"></a></center>
   </div>
  <div id="login_button_holder" style="text-align:center">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>

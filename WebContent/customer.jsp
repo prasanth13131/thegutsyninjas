@@ -15,7 +15,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="googlemapengineer.js"></script>
+	<script src="googlemap.js"></script>
 	<script>
 			
 	</script>
@@ -27,7 +27,7 @@
 <div data-role="page" data-theme="c">
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>
-    <h1>vDispatch</h1>
+    <h1>vDispatch (<%=db.getCustomerName()%>)</h1>
     <a href="index.jsp" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon-action ui-btn-icon-left ui-btn-icon-notext">Log Out</a>
   </div>
 
@@ -36,13 +36,15 @@
   </div>
 
   <div data-role="footer"><center>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Active</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">In Queue</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Pending</a></center>
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Fios</a>
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">Tv</a>
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Voice</a>
+	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Internet</a></center>
   </div>
-  <div id="login_button_holder" style="text-align:center">
-    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+ <div id="login_button_holder" style="text-align:center">
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
 </div>
+
 </div>
 
 </body>

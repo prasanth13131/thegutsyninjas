@@ -17,7 +17,7 @@ function initialize() {
 }
 
 function showPosition(position) {
-   alert(position.coords.latitude);
+   
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
     
     map.setCenter(latlng);

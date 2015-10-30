@@ -28,7 +28,7 @@
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>
     <h1>vDispatch</h1>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Search</a>
+    <a href="login.jsp" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Log Out</a>
   </div>
 
   <div data-role="main" class="ui-content" id="googleMap" style="width:100%;height:380px;">

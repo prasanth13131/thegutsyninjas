@@ -28,7 +28,7 @@
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>
     <h1>vDispatch (<%=db.getCustomerName()%>)</h1>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Search</a>
+    <a href="login.jsp" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext">Log Out</a>
   </div>
 
   <div data-role="main" class="ui-content" id="googleMap" style="width:100%;height:380px;">
@@ -44,9 +44,7 @@
  <div id="login_button_holder" style="text-align:center">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
 </div>
-<div id="login_button_holder" style="text-align:center">
-    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
-</div>
+
 </div>
 
 </body>

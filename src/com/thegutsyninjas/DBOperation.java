@@ -80,6 +80,22 @@ public class DBOperation {
 		return engineers;
 	}
 	
+	public String getRequest(){
+		String reqid = null;
+		Connection conn = SQLManager.openConnection();
+		try {
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED='N'"); 
+			while (res.next()) { 
+				reqid = res.getString("REQUEST_ID");
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return reqid;
+	}
 	
 	
 }

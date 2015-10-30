@@ -49,7 +49,7 @@
 </head>
 <body>
 	
-		
+<form id="loginform">
 <div data-role="page" data-theme="c">
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>
@@ -58,9 +58,9 @@
   </div>
 
   <div data-role="main" class="ui-content" id="login" style="width:98%;height:150px;">
-  <form id="loginform">
-    <input type="text" id="loginpin" maxlength=4 size=5></input>
-    </form>
+  
+    <input type="password" id="loginpin" maxlength=4 size=5></input>
+    
   </div>
 
   <div data-role="footer">
@@ -72,6 +72,6 @@
     <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
 </div>
 </div>
-
+</form>
 </body>
 </html>

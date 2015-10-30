@@ -24,7 +24,7 @@ function initialize() {
 	 	 	});
 	
 	myCircle.setMap(map);
-	showEngineers("ALL");
+	
 			 
 	if (navigator.geolocation) {
 		
@@ -53,6 +53,7 @@ function showPosition(position) {
 //		 
 		map.setCenter(latlng);
 		myCircle.setCenter(latlng);
+		showEngineers("ALL");
 		 
 }
 
@@ -71,7 +72,7 @@ function showEngineers(type)
 	}  
 	}).done(function(engineers)
 			{
-				
+			alert(engineers+" engineers fetched");	
 		for(i=0;i<engineers.length;i++)
 			{
 			addMarker( new google.maps.LatLng(engineers[i].LATITUDE,engineers[i].LONGITUDE));

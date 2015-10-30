@@ -62,6 +62,7 @@ public class DBOperation {
 			LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
 			while (res!=null&&res.next()) { 
 				rowdata.put("ID",res.getString("RECORD_ID"));
+				System.out.println(res.getString("RECORD_ID"));
 				rowdata.put("FIRST_NAME",res.getString("FIRST_NAME"));
 				rowdata.put("LAST_NAME",res.getString("LAST_NAME"));
 				rowdata.put("EXPERT_IN",res.getString("EXPERT_IN"));

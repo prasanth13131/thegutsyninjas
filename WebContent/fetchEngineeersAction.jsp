@@ -7,8 +7,8 @@
     String ajaxreq=request.getParameter("ajaxReq");
     if(ajaxreq!=null&&ajaxreq.equalsIgnoreCase("fetchEngineers")){
     	DBOperation db = new DBOperation();
-    	List<LinkedHashMap<String,String>> englist=db.getEngineers();
-   
+    	String type=request.getParameter("enggType");
+    	List<LinkedHashMap<String,String>> englist=db.getEngineers(type);
     	response.setContentType("application/Json");
     	response.setHeader("Cache-Control", "no-cache");
     	response.getWriter().print(JSONArray.fromObject(englist));

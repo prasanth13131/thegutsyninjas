@@ -30,17 +30,34 @@ public class DBOperation {
 		return name;
 	}
 	
-	public List<LinkedHashMap<String,String>> getEngineers()
+	public List<LinkedHashMap<String,String>> getEngineers(String type)
 
 	{
 		List<LinkedHashMap<String,String>> engineers=new ArrayList<LinkedHashMap<String,String>>();
-		
+		String query="SELECT RECORD_ID,FIRST_NAME,LAST_NAME,EXPERT_IN,LATITUDE,LONGITUDE,STATUS FROM ENGINEER";
+		if(type.equalsIgnoreCase("FIOS"))
+		{
+			query+=" WHERE TYPE='FIOS'";
+		}
+		else if(type.equalsIgnoreCase("TV"))
+		{
+			query+=" WHERE TYPE='TV'";
+		}
+		else if(type.equalsIgnoreCase("VOICE"))
+		{
+			query+=" WHERE TYPE='VOICE'";
+		}
+		else if(type.equalsIgnoreCase("INTE"))
+		{
+			query+=" WHERE TYPE='INTE'";
+		}
 		Connection conn = SQLManager.openConnection();
 		try {
 			System.out.println("conn  ==>"+conn);
 			Statement st = conn.createStatement(); 
 			System.out.println("st  ==>"+st);
-			ResultSet res = st.executeQuery("SELECT RECORD_ID,FIRST_NAME,LAST_NAME,EXPERT_IN,LATITUDE,LONGITUDE,STATUS FROM ENGINEER WHERE RECORD_ID=1"); 
+			System.out.println("Query ==>"+query);
+			ResultSet res = st.executeQuery(query); 
 			System.out.println("res  ==>"+res);
 			LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
 			while (res!=null&&res.next()) { 

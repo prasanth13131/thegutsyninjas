@@ -69,8 +69,8 @@ function showEngineers(type)
 	data: {enggType: type,ajaxReq: "fetchEngineers"},
 	dataType: 'application/Json',
 	error: function(xmlhttp,status){
-		alert(status,xmlhttp);
-		alert('Error');
+		alert("message:"+status+"xmlhttp:"+xmlhttp);
+		
 		
 	}  
 	}).done(function(engineers)

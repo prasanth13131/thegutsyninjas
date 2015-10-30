@@ -17,8 +17,45 @@
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="googlemapengineer.js"></script>
 	<script>
+			$(document).ready(function(){	
 			
+			
+			$('.engreq').click(function(){		
+			var type=this.id;
+			
+			
+
+	$.ajax({
+	url: 'fetchEngineeersAction.jsp',
+	type: 'GET',
+	async: false,
+	data: {enggType: type,ajaxReq: "fetchCustomers",id: "1"},
+	error: function(xmlhttp,status){
+		alert("message:"+status+"xmlhttp:"+xmlhttp);
+		
+		
+	}  
+	}).done(function(data)
+			{
+		var customers = eval('('+data+')');
+			//lalert(engineers.length+" engineers fetched");
+			if(customers.length==0)
+			{
+			alert("No Customers Available");
+			return;
+			}	
+			for(i=0;i<customers.length;i++)
+			{
+			addMarker( new google.maps.LatLng(customers[i].LATITUDE,customers[i].LONGITUDE),customers[i].REQUEST_TIME);
+			}
+			showMarkers();
+			});
+	
+			});
+			
+			});
 	</script>
+
 
 </head>
 <body>
@@ -36,9 +73,9 @@
   </div>
 
   <div data-role="footer"><center>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Active</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">In Queue</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Pending</a></center>
+    <a href="#" id="A" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engreq">Active</a>
+    <a href="#" id="Y" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engreq">In Queue</a>
+    <a href="#" id="N" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engreq">New</a></center>
   </div>
   <div id="login_button_holder" style="text-align:center">
     <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">

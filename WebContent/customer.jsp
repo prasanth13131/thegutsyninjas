@@ -25,6 +25,7 @@
 			$('.engtype').click(function(){
 			
 			var type=this.id;
+			deleteMarkers();
 			showEngineers(type);
 			
 			});

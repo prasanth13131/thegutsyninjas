@@ -61,7 +61,7 @@ function showPosition(position) {
 
 function showEngineers(type)
 {
-	deleteMarkers();
+	
 	$.ajax({
 	url: 'fetchEngineeersAction.jsp',
 	type: 'GET',
@@ -75,7 +75,7 @@ function showEngineers(type)
 	}).done(function(data)
 			{
 		var engineers = eval('('+data+')');
-			alert(engineers.length+" engineers fetched");	
+			//lalert(engineers.length+" engineers fetched");	
 		for(i=0;i<engineers.length;i++)
 			{
 			addMarker( new google.maps.LatLng(engineers[i].LATITUDE,engineers[i].LONGITUDE),engineers[i].EXPERT_IN);
@@ -111,8 +111,7 @@ function deleteMarkers() {
 
 //Adds a marker to the map and push to the array.
 function addMarker(location,type) {
-	alert(ctxPath);
-	var image=ctxPath+'images/'+type+'.png';
+	var image=ctxPath+'/images/'+type+'.png';
   var marker = new google.maps.Marker({
     position: location,
     map: map,

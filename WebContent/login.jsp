@@ -16,7 +16,34 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script>
-			
+		$(document).ready(function(){
+		
+		$('#logintrigger').click(function(){
+		
+		var pwd=$('#loginpin').val();
+		
+		if(pwd==null||pwd.length==0)
+		{
+		alert("vPIN cannot be empty");
+		}
+		else if(pwd=="1234")
+		{
+		$('#loginform').attr('action','index.jsp');
+		$('#loginform').submit();
+		}
+		else if(pwd="2345")
+		{
+		$('#loginform').attr('action','engineer.jsp');
+		$('#loginform').submit();
+		}
+		else
+		{
+		alert("Invalid vPIN")
+		}
+		
+		});
+		
+		});	
 	</script>
 
 </head>
@@ -30,15 +57,20 @@
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left ui-btn-icon-notext">Search</a>
   </div>
 
-  <div data-role="main" class="ui-content" id="login" style="width:100%;height:150px;">
+  <div data-role="main" class="ui-content" id="login" style="width:98%;height:150px;">
+  <form id="loginform">
     <input type="text" id="loginpin" maxlength=4 size=5></input>
+    </form>
   </div>
 
   <div data-role="footer">
 <div style="text-align:center">
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">Login</a>
+    <a id="logintrigger" href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">Login</a>
 </div>
   </div>
+  <div id="login_button_holder" style="text-align:center">
+    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+</div>
 </div>
 
 </body>

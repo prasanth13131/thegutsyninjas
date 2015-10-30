@@ -20,7 +20,7 @@ function showPosition(position) {
    
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
     
-    map.setCenter(latlng);
+    
     
     new google.maps.InfoWindow({
    	   content:'Bob Marley'
@@ -45,6 +45,8 @@ function showPosition(position) {
 		 	   fillOpacity:0.4
 		 	 	});
 				 myCircle.setMap(map);	
+				 
+				 map.setCenter(latlng);
 		 
 }
 

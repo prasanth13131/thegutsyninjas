@@ -35,11 +35,14 @@
     
   </div>
 
-  <div data-role="footer">
+  <div data-role="footer"><center>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Active</a>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">In Queue</a>
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Pending</a>
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Pending</a></center>
   </div>
+  <div id="login_button_holder" style="text-align:center">
+    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+</div>
 </div>
 
 </body>

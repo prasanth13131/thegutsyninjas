@@ -35,12 +35,18 @@
     
   </div>
 
-  <div data-role="footer">
+  <div data-role="footer"><center>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Fios</a>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left ">Tv</a>
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Voice</a>
-	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Internet</a>
+	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left">Internet</a></center>
   </div>
+ <div id="login_button_holder" style="text-align:center">
+    <a href="#" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
+</div>
+<div id="login_button_holder" style="text-align:center">
+    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+</div>
 </div>
 
 </body>

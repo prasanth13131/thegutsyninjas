@@ -59,8 +59,9 @@ public class DBOperation {
 			System.out.println("Query ==>"+query);
 			ResultSet res = st.executeQuery(query); 
 			System.out.println("res  ==>"+res);
-			LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
+			
 			while (res!=null&&res.next()) { 
+				LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
 				rowdata.put("ID",res.getString("RECORD_ID"));
 				System.out.println(res.getString("RECORD_ID"));
 				rowdata.put("FIRST_NAME",res.getString("FIRST_NAME"));

@@ -63,6 +63,7 @@ function showEngineers(type)
 	$.ajax({
 	url: 'fetchEngineeersAction.jsp',
 	type: 'GET',
+	async: false,
 	data: {enggType: type,ajaxReq: "fetchEngineers"},
 	dataType: 'application/Json',
 	error: function(){

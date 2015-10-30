@@ -78,7 +78,7 @@ function showEngineers(type)
 			alert(engineers.length+" engineers fetched");	
 		for(i=0;i<engineers.length;i++)
 			{
-			addMarker( new google.maps.LatLng(engineers[i].LATITUDE,engineers[i].LONGITUDE));
+			addMarker( new google.maps.LatLng(engineers[i].LATITUDE,engineers[i].LONGITUDE),engineers[i].EXPERT_IN);
 			}
 			showMarkers();
 			});
@@ -110,10 +110,13 @@ function deleteMarkers() {
 }
 
 //Adds a marker to the map and push to the array.
-function addMarker(location) {
+function addMarker(location,type) {
+	alert(ctxPath);
+	var image=ctxPath+'images/'+type+'.png';
   var marker = new google.maps.Marker({
     position: location,
-    map: map
+    map: map,
+    icon: image
   });
   markers.push(marker);
 }

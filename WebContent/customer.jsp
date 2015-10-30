@@ -20,16 +20,23 @@
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="googlemap.js"></script>
 	<script>
+			var type="";
 			$(document).ready(function(){
 			
-			$('.engtype').click(function(){
+				$('.engtype').click(function(){
+					 type=this.id;
+					deleteMarkers();
+					showEngineers(type);
+				});
 			
-			var type=this.id;
-			deleteMarkers();
-			showEngineers(type);
-			
-			});
-			
+				$('#triggerReqBtn').click(function(){
+					if(type==""){
+					  alert("Please choose service type");
+					}else{
+						var url = "request.jsp?action=need&custId=1&_lat=13.00&_long=17.00&expertIn="+type;
+						$(this).attr("href",url);
+					}
+				});
 			});
 	</script>
 
@@ -55,7 +62,7 @@
 	<a href="#" id="INTE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Internet<img src="images/INTE.png"></a></center>
   </div>
  <div id="login_button_holder" style="text-align:center">
-    <a href="request.jsp?action=need&custId=1&_lat=13.00&_long=17.00&expertIn=FIOS" data-ajax="false"class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
+    <a href="#" id="triggerReqBtn" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
 </div>
 
 </div>

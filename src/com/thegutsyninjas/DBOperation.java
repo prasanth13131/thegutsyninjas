@@ -156,7 +156,7 @@ public class DBOperation {
 			Statement st = conn.createStatement(); 
 			ResultSet res = st.executeQuery("SELECT MAX(REQUEST_ID)+1 FROM REQUEST"); 
 			while (res.next()) { 
-				id = res.getInt(0);
+				id = res.getInt(1);
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();

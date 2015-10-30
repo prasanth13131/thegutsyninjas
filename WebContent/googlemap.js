@@ -2,7 +2,6 @@ var map;
 var myCircle;
 var markers = [];
 
-
 function initialize() {
 	//alert('hi');
 	 var latlng = new google.maps.LatLng(-34.397, 150.644);

@@ -6,7 +6,9 @@
   if(reqid!=null||(!reqid.equalsIgnoreCase("")))
   {
   %>
-  <jsp:forward page="request.jsp?custId=1&rid=<%=reqid %>">
+  <jsp:forward page="request.jsp">
+  <jsp:param name="custId" value="1" /> 
+ <jsp:param name="rid" value="<%=reqid %>" /> 
   </jsp:forward>
   
   <%} 
@@ -30,6 +32,8 @@
 	<script src="googlemap.js"></script>
 	<script>
 			var type="";
+			var custlat="";
+			var custlong="";
 			$(document).ready(function(){
 			
 				$('.engtype').click(function(){
@@ -42,7 +46,7 @@
 					if(type==""){
 					  alert("Please choose service type");
 					}else{
-		
+						alert(custlat+":"+custlong)
 						var url = "request.jsp?action=need&custId=1&_lat=13.00&_long=17.00&expertIn="+type;
 						$(this).attr("href",url);
 					}

@@ -35,6 +35,8 @@ function initialize() {
 
 function showPosition(position) {
    
+	custlat=position.coords.latitude;
+	custlong=position.coords.longitude;
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
    
 //    new google.maps.InfoWindow({

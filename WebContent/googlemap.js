@@ -27,7 +27,8 @@ function initialize() {
 	showEngineers("ALL");
 			 
 	if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
+		
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         alert("Geolocation is not supported by this browser.");
      }

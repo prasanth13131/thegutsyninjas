@@ -50,4 +50,8 @@ function showPosition(position) {
 		 
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+$(document).ready(function(){
+	initialize();
+	
+});
+//google.maps.event.addDomListener(window, 'load', initialize);

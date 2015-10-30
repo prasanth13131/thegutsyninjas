@@ -68,7 +68,8 @@ function showEngineers(type)
 	async: false,
 	data: {enggType: type,ajaxReq: "fetchEngineers"},
 	dataType: 'application/Json',
-	error: function(){
+	error: function(xmlhttp,status){
+		alert(status,xmlhttp);
 		alert('Error');
 		
 	}  

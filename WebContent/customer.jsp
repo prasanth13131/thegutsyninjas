@@ -55,7 +55,7 @@
 	<a href="#" id="INTE" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engtype">Internet<img src="images/INTE.png"></a></center>
   </div>
  <div id="login_button_holder" style="text-align:center">
-    <a href="#" class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
+    <a href="request.jsp?action=need&custId=1&_lat=13.00&_long=17.00&expertIn=FIOS" data-ajax="false"class="ui-btn ui-corner-all ui-shadow ">Request Assistance</a>
 </div>
 
 </div>

@@ -148,5 +148,42 @@ public class DBOperation {
 		return customers;
 	}
 	
+	public int getRequestId(){
+		int id = 0;
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT MAX(REQUEST_ID)+1 FROM REQUEST"); 
+			while (res.next()) { 
+				id = res.getInt(0);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return id;
+	}
 	
+	public int insertRequest(String custId,String expertIn,String _lat,String _long){
+	
+		int reqId = getRequestId();
+		Connection conn = SQLManager.openConnection();
+		try {
+			Statement st = conn.createStatement(); 
+			String sql="INSERT INTO REQUEST(REQUEST_ID,CUSTOMER_ID,EXPERT_IN,CUSTOMER_LAT,CUSTOMER_LONG)VALUES("+reqId+","+custId+",'"+expertIn+"','"+_lat+"','"+_long+"')";
+			boolean res = st.execute(sql);
+			System.out.println("request inserted : "+res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			reqId=0;
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		
+		return reqId;
+	}
 }

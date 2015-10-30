@@ -61,7 +61,7 @@ function showPosition(position) {
 
 function showEngineers(type)
 {
-	
+	deleteMarkers();
 	$.ajax({
 	url: 'fetchEngineeersAction.jsp',
 	type: 'GET',

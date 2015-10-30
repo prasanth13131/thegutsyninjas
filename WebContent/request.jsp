@@ -14,6 +14,7 @@
   	System.out.println("Request inserted successfully");
   }else{
   		// load information
+  		requstId=Integer.parseInt(request.getParameter("rid"));
   }
  %>
 <html>

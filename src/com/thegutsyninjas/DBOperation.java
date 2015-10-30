@@ -80,12 +80,12 @@ public class DBOperation {
 		return engineers;
 	}
 	
-	public String getRequest(){
+	public String getRequestOfCustomerID(String custid){
 		String reqid = null;
 		Connection conn = SQLManager.openConnection();
 		try {
 			Statement st = conn.createStatement(); 
-			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED='N'"); 
+			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED='N' AND CUSTOMER_ID='"+custid+"'"); 
 			while (res.next()) { 
 				reqid = res.getString("REQUEST_ID");
 			 }

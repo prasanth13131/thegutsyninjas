@@ -2,7 +2,16 @@
 
 <%
   DBOperation db = new DBOperation();
- %>
+  String reqid=db.getRequestOfCustomerID("1");
+  if(reqid!=null||(!reqid.equalsIgnoreCase("")))
+  {
+  %>
+  <jsp:forward page="request.jsp?custId=1&rid=<%=reqid %>">
+  </jsp:forward>
+  
+  <%} 
+  %>
+
  
 <html>
 <head>
@@ -33,6 +42,7 @@
 					if(type==""){
 					  alert("Please choose service type");
 					}else{
+		
 						var url = "request.jsp?action=need&custId=1&_lat=13.00&_long=17.00&expertIn="+type;
 						$(this).attr("href",url);
 					}

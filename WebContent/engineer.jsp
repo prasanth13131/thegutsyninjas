@@ -23,7 +23,7 @@
 			$('.engreq').click(function(){		
 			var type=this.id;
 			
-			
+		deleteMarkers();	
 
 	$.ajax({
 	url: 'fetchEngineeersAction.jsp',
@@ -46,7 +46,7 @@
 			}	
 			for(i=0;i<customers.length;i++)
 			{
-			addMarker( new google.maps.LatLng(customers[i].LATITUDE,customers[i].LONGITUDE),customers[i].REQUEST_TIME);
+			addMarker( new google.maps.LatLng(customers[i].CUSTOMER_LAT,customers[i].CUSTOMER_LAT),customers[i].REQUEST_TIME);
 			}
 			showMarkers();
 			});

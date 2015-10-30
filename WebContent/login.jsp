@@ -1,9 +1,4 @@
-<%@ page import="com.thegutsyninjas.*" %>
 
-<%
-  DBOperation db = new DBOperation();
- %>
- 
 <html>
 <head>
 	<meta charset="utf-8">
@@ -49,7 +44,7 @@
 </head>
 <body>
 	
-<form id="loginform">
+<form id="loginform" method="post">
 <div data-role="page" data-theme="c">
   <div data-role="header">
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left ui-btn-icon-notext ">Home</a>

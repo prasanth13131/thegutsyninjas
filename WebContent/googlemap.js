@@ -2,6 +2,7 @@ var map;
 var myCircle;
 
 function initialize() {
+	//alert('hi');
 	 var latlng = new google.maps.LatLng(-34.397, 150.644);
 	var mapProp = {
 			center:latlng,
@@ -9,6 +10,19 @@ function initialize() {
 		    mapTypeId:google.maps.MapTypeId.ROADMAP
 		  };
 	map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	
+	myCircle = new google.maps.Circle({
+	 	   center:latlng,
+	 	   radius:1000,
+	 	   strokeColor:"#0000FF",
+	 	   strokeOpacity:0.8,
+	 	   strokeWeight:2,
+	 	   fillColor:"#000000",
+	 	   fillOpacity:0.4
+	 	 	});
+	
+	myCircle.setMap(map);
+			 
 	if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
     } else { 
@@ -19,9 +33,7 @@ function initialize() {
 function showPosition(position) {
    
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-    
-    
-    
+   
     new google.maps.InfoWindow({
    	   content:'Bob Marley'
    	   }).open(map,new google.maps.Marker({position: {lat: 13.003196, lng: 80.200601}, map: map}));
@@ -35,18 +47,8 @@ function showPosition(position) {
        	   content:'Babuji'
        	   }).open(map,new google.maps.Marker({position: {lat: 13.013196, lng: 80.203601}, map: map}));
 		 
-		 	myCircle = new google.maps.Circle({
-		 	   center:latlng,
-		 	   radius:1000,
-		 	   strokeColor:"#0000FF",
-		 	   strokeOpacity:0.8,
-		 	   strokeWeight:2,
-		 	   fillColor:"#000000",
-		 	   fillOpacity:0.4
-		 	 	});
-				 myCircle.setMap(map);	
-				 
-				 map.setCenter(latlng);
+		map.setCenter(latlng);
+		myCircle.setCenter(latlng);
 		 
 }
 

@@ -17,7 +17,12 @@
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="googlemapengineer.js"></script>
 	<script>
-			$(document).ready(function(){	
+			$(document).ready(function(){
+			
+			$('#triggerReqBtn').click(function(){
+					var url = "service.jsp";
+					$(this).attr("href",url);
+			});
 			
 			
 			$('.engreq').click(function(){		
@@ -78,8 +83,9 @@
     <a href="#" id="N" class="ui-btn ui-corner-all ui-shadow ui-icon-user ui-btn-icon-left engreq">New</a></center>
   </div>
   <div id="login_button_holder" style="text-align:center">
-    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+    <a href="#" id="triggerReqBtn" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ">My Actions</a>
 </div>
+
 </div>
 
 </body>

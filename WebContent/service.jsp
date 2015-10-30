@@ -2,25 +2,23 @@
 
 <%
   DBOperation db = new DBOperation();
-  int requstId =0;
-  String action = request.getParameter("action");
-  if(action!=null &&  action.equals("need")){
-  	String custId = request.getParameter("custId");
-    String expertIn = request.getParameter("expertIn");
-  	String _lat = request.getParameter("_lat");
-  	String _long = request.getParameter("_long");
-  	
-  	requstId = db.insertRequest(custId, expertIn, _lat, _long);
-  	System.out.println("Request inserted successfully");
-  }else{
-  		// load information
-  }
+String engid=request.getParameter("enggid");
+int activecounts=db.getActiveCustomersCount(engid);
+int queuecounts=db.getQueueCustomersCount(engid);
+int newcounts=db.getNewCustomersCount(engid);
+  
  %>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>The Gusty Ninjas</title>
+	<script>
+	var enginid="<%=engid%>";
+	var act="<%=activecounts%>";
+	var que="<%=queuecounts%>";
+	var newc="<%=newcounts%>";
+	</script>
 	<link rel="stylesheet" href="themes/seenu1.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
@@ -30,6 +28,19 @@
 	<script>
 		$(document).ready(function(){
 		
+			$('#active-trigger').click(function(){
+				
+				if(act==0)
+					{
+					alert("You have no active customers");
+					}
+				else
+					{
+					var url = "action.jsp";
+					$(this).attr("href",url);
+					}
+			});
+			
 		
 		});	
 	</script>
@@ -49,25 +60,23 @@
    		<ul data-role="listview" data-inset="true">
 	      <li data-role="divider">Actions</li>
 	      <li>
-	        <a href="#">
-	       	 <h2>Active</h2>
-	        	<p>Google Chrome is a free, open-source web browser. Released in 2008.</p>
+	        <a href="#" id="active-trigger" data-ajax="true">
+	       	 <h2>Active - (<%=activecounts %>)</h2>
+	        	<p>Change Status of Active User to Serviced</p>
 	        </a>
-	        <a href="action.jsp" data-ajax="true">Download Browser</a>
 	      </li>
 	      <li>
-	        <a href="#">
-	        <h2>New</h2>
-	        <p>Firefox is a web browser from Mozilla. Released in 2004.</p>
+	         <a href="queue.jsp" data-ajax="true">
+	        <h2>Queue - (<%=queuecounts %>)</h2>
+	        <p>View Customers in Service Queue.</p>
 	        </a>
-	        <a href="new.jsp" data-ajax="true">Download Browser</a>
+
 	      </li>
 	      <li>
-	        <a href="#">
-	        <h2>Prasant</h2>
-	        <p>Firefox is a web browser from Mozilla. Released in 2004.</p>
+	        <a href="new.jsp" data-ajax="true">
+	        <h2>New - (<%=newcounts %>)</h2>
+	        <p>View Open Customer Service Tickets.</p>
 	        </a>
-	        <a href="hh.jsp" data-ajax="true">Download Browser</a>
 	      </li>
 	    </ul>
 	    

@@ -1,5 +1,6 @@
 var map;
 var myCircle;
+var markers = [];
 
 function initialize() {
 	 var latlng = new google.maps.LatLng(-34.397, 150.644);
@@ -36,7 +37,28 @@ function showPosition(position) {
 	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 	map.setCenter(latlng);
 	myCircle.setCenter(latlng);
+	updatePosition(enginid,position.coords.latitude,position.coords.longitude);
 		 
+}
+
+
+function updatePosition(eid,lat,long){
+	
+	$.ajax({
+		url: 'fetchEngineeersAction.jsp',
+		type: 'GET',
+		async: true,
+		data: {enggId: eid,ajaxReq: "updateEngPosition",latitude: lat,longitude: long},
+		error: function(xmlhttp,status){
+			alert("message:"+status+"xmlhttp:"+xmlhttp);
+			
+			
+		}  
+		}).done(function()
+				{
+			alert("Engineer Location Updated");
+				});
+	
 }
 
 
@@ -70,7 +92,7 @@ var marker = new google.maps.Marker({
   position: location,
   map: map
 });
-new google.maps.InfoWindow({content:timestamp}).open(map,marker);
+//new google.maps.InfoWindow({content:timestamp}).open(map,marker);
 
 markers.push(marker);
 }

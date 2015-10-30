@@ -186,4 +186,89 @@ public class DBOperation {
 		
 		return reqId;
 	}
+	
+	public int getActiveCustomersCount(String engid){
+		int id = 0;
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT COUNT(CUSTOMER_ID) FROM REQUEST WHERE IS_ACCEPTED='A' AND ENGINEER_ID='"+engid+"'"); 
+			while (res.next()) { 
+				id = res.getInt(1);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return id;
+	}
+	public int getQueueCustomersCount(String engid){
+		int id = 0;
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT COUNT(CUSTOMER_ID) FROM REQUEST WHERE IS_ACCEPTED='Y' AND ENGINEER_ID='"+engid+"'"); 
+			while (res.next()) { 
+				id = res.getInt(1);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return id;
+	}
+	public int getNewCustomersCount(String engid){
+		int id = 0;
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT COUNT(CUSTOMER_ID) FROM REQUEST WHERE IS_ACCEPTED='N'"); 
+			while (res.next()) { 
+				id = res.getInt(1);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return id;
+	}
+	
+	public void updateEngPosition(String eid,String lat,String longi){
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			boolean res = st.execute("UPDATE ENGINEER SET LATITUDE='"+lat+"', LONGITUDE='"+longi+"' FROM REQUEST WHERE RECORD_ID='"+eid+"'"); 
+			System.out.println(res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+	}
+	
+	public void clearRequestTable(){
+		Connection conn = SQLManager.openConnection();
+		try {
+
+			Statement st = conn.createStatement(); 
+			boolean res = st.execute("DELETE FROM REQUEST"); 
+			System.out.println(res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+	}
 }

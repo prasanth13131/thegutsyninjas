@@ -19,6 +19,16 @@
     	response.getWriter().print(JSONArray.fromObject(englist));
     	
     }
+    else if(ajaxreq!=null&&ajaxreq.equalsIgnoreCase("updateEngPosition")){
+    	DBOperation db = new DBOperation();
+    	String lat=request.getParameter("latitude");
+    	String longi=request.getParameter("longitude");
+    	String id=request.getParameter("enggId");
+    	db.updateEngPosition(id,lat,longi);
+    	
+
+    	
+    }
     
     
     %>

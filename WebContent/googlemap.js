@@ -67,14 +67,14 @@ function showEngineers(type)
 	type: 'GET',
 	async: false,
 	data: {enggType: type,ajaxReq: "fetchEngineers"},
-	dataType: 'application/Json',
 	error: function(xmlhttp,status){
 		alert("message:"+status+"xmlhttp:"+xmlhttp);
 		
 		
 	}  
-	}).done(function(engineers)
+	}).done(function(data)
 			{
+		var engineers = eval('('+data+')');
 			alert(engineers.length+" engineers fetched");	
 		for(i=0;i<engineers.length;i++)
 			{

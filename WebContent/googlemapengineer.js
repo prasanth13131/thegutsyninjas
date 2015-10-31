@@ -42,13 +42,13 @@ function showPosition(position) {
 }
 
 
-function updatePosition(eid,lat,long){
+function updatePosition(eid,lat,longi){
 	
 	$.ajax({
 		url: 'fetchEngineeersAction.jsp',
 		type: 'GET',
 		async: true,
-		data: {enggId: eid,ajaxReq: "updateEngPosition",latitude: lat,longitude: long},
+		data: {enggId: eid,ajaxReq: "updateEngPosition",latitude: lat,longitude: longi},
 		error: function(xmlhttp,status){
 			alert("message:"+status+"xmlhttp:"+xmlhttp);
 			

@@ -1,6 +1,7 @@
 package com.thegutsyninjas;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class DBOperation {
 			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED='N' AND CUSTOMER_ID='"+custid+"'"); 
 			while (res.next()) { 
 				reqid = res.getString("REQUEST_ID");
+				System.out.println("Req ID: "+ reqid);
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -245,10 +247,18 @@ public class DBOperation {
 	public void updateEngPosition(String eid,String lat,String longi){
 		Connection conn = SQLManager.openConnection();
 		try {
+			String query="UPDATE ENGINEER SET LATITUDE=? , LONGITUDE=? WHERE ENGINEER_ID=?";
+			PreparedStatement preparedStmt = conn.prepareStatement(query); 
+	     
+		      preparedStmt.setString(1, lat);
+		      preparedStmt.setString(2, longi);
+		      preparedStmt.setString(3, longi);
+		      
+		      System.out.println(preparedStmt.executeUpdate());
 
-			Statement st = conn.createStatement(); 
-			boolean res = st.execute("UPDATE ENGINEER SET LATITUDE='"+lat+"', LONGITUDE='"+longi+"' FROM REQUEST WHERE RECORD_ID='"+eid+"'"); 
-			System.out.println(res);
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -263,7 +273,7 @@ public class DBOperation {
 
 			Statement st = conn.createStatement(); 
 			boolean res = st.execute("DELETE FROM REQUEST"); 
-			System.out.println(res);
+			System.out.println("Delete Status: "+res);
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -271,4 +281,54 @@ public class DBOperation {
 			SQLManager.closeConnection(conn);
 		}
 	}
+	
+	public void updateRequestStatus(String reqid, String status){
+		Connection conn = SQLManager.openConnection();
+		try {
+			String query="UPDATE REQUEST SET IS_ACCEPTED=? WHERE REQUEST_ID=?";
+			PreparedStatement preparedStmt = conn.prepareStatement(query); 
+	     
+		      preparedStmt.setString(1, status);
+		      preparedStmt.setString(2, reqid);
+		      
+		      
+		      System.out.println(preparedStmt.executeUpdate());
+		      
+		      
+//			Statement st = conn.createStatement(); 
+//			boolean res = st.execute("UPDATE REQUEST SET IS_ACCEPTED='"+status+"' WHERE REQUEST_ID='"+reqid+"'"); 
+//			System.out.println("Customer Update Status: "+res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+	}
+	
+	public void updateRequestStatus(String reqid, String status, String eid){
+		Connection conn = SQLManager.openConnection();
+		try {
+			String query="UPDATE REQUEST SET IS_ACCEPTED=?, ENGINEER_ID=? WHERE REQUEST_ID=?";
+			PreparedStatement preparedStmt = conn.prepareStatement(query); 
+	     
+		      preparedStmt.setString(1, status);
+		      preparedStmt.setString(2, eid);
+		      preparedStmt.setString(3, reqid);
+		      
+		      
+		      System.out.println(preparedStmt.executeUpdate());
+		      
+		      
+//			Statement st = conn.createStatement(); 
+//			boolean res = st.execute("UPDATE REQUEST SET IS_ACCEPTED='"+status+"' WHERE REQUEST_ID='"+reqid+"'"); 
+//			System.out.println("Customer Update Status: "+res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+	}
+	
 }

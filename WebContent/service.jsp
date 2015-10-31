@@ -36,11 +36,43 @@ int newcounts=db.getNewCustomersCount(engid);
 					}
 				else
 					{
-					var url = "action.jsp";
+					var url = "action.jsp?enggid="+enginid;
 					$(this).attr("href",url);
 					}
 			});
 			
+			$('#queue-trigger').click(function(){
+							
+							if(que==0)
+								{
+								alert("You have no customers in your queue");
+								}
+							else
+								{
+								var url = "queue.jsp?enggid="+enginid;
+								$(this).attr("href",url);
+								}
+						});
+			
+			$('#new-trigger').click(function(){
+				
+				if(newc==0)
+					{
+					alert("No New Customer Service Tickets");
+					}
+				else
+					{
+					var url = "new.jsp?enggid="+enginid;
+					$(this).attr("href",url);
+					}
+			});
+			
+				$('#manage-trigger').click(function(){
+					{
+					var url = "manage.jsp";
+					$(this).attr("href",url);
+					}
+			});
 		
 		});	
 	</script>
@@ -60,22 +92,28 @@ int newcounts=db.getNewCustomersCount(engid);
    		<ul data-role="listview" data-inset="true">
 	      <li data-role="divider">Actions</li>
 	      <li>
-	        <a href="#" id="active-trigger" data-ajax="true">
+	        <a href="#" id="active-trigger" data-ajax="false">
 	       	 <h2>Active - (<%=activecounts %>)</h2>
 	        	<p>Change Status of Active User to Serviced</p>
 	        </a>
 	      </li>
 	      <li>
-	         <a href="queue.jsp" data-ajax="true">
+	         <a href="#" id="queue-trigger" data-ajax="false">
 	        <h2>Queue - (<%=queuecounts %>)</h2>
 	        <p>View Customers in Service Queue.</p>
 	        </a>
 
 	      </li>
 	      <li>
-	        <a href="new.jsp" data-ajax="true">
+	        <a href="#" id="new-trigger" data-ajax="false">
 	        <h2>New - (<%=newcounts %>)</h2>
 	        <p>View Open Customer Service Tickets.</p>
+	        </a>
+	      </li>
+	      <li>
+	        <a href="#" id="manage-trigger" data-ajax="false">
+	        <h2>Manage Account</h2>
+	        <p>Administrator Activities</p>
 	        </a>
 	      </li>
 	    </ul>

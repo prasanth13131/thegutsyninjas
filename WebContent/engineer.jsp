@@ -47,9 +47,7 @@
 	async: false,
 	data: {enggType: type,ajaxReq: "fetchCustomers",id: enginid},
 	error: function(xmlhttp,status){
-		alert("message:"+status+"xmlhttp:"+xmlhttp);
-		
-		
+		alert("message:"+status+"xmlhttp:"+xmlhttp);		
 	}  
 	}).done(function(data)
 			{

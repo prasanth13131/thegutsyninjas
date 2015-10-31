@@ -9,7 +9,7 @@
     String expertIn = request.getParameter("expertIn");
   	String _lat = request.getParameter("_lat");
   	String _long = request.getParameter("_long");
-  	
+  	System.out.println(custId+":"+ _lat+":"+_long);
   	requstId = db.insertRequest(custId, expertIn, _lat, _long);
   	System.out.println("Request inserted successfully");
   }else{

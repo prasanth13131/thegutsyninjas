@@ -247,7 +247,7 @@ public class DBOperation {
 	public void updateEngPosition(String eid,String lat,String longi){
 		Connection conn = SQLManager.openConnection();
 		try {
-			String query="UPDATE ENGINEER SET LATITUDE=? , LONGITUDE=? WHERE ENGINEER_ID=?";
+			String query="UPDATE ENGINEER SET LATITUDE=? , LONGITUDE=? WHERE RECORD_ID=?";
 			PreparedStatement preparedStmt = conn.prepareStatement(query); 
 	     
 		      preparedStmt.setString(1, lat);

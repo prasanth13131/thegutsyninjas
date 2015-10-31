@@ -1,10 +1,6 @@
 var map;
 var myCircle;
 var markers = [];
-var infowindow;
-
-var gds=new google.maps.DirectionsService;
-var gdr=new google.maps.DirectionsRenderer;
 
 function initialize() {
 	 var latlng = new google.maps.LatLng(-34.397, 150.644);
@@ -89,8 +85,6 @@ setMapOnAll(map);
 function deleteMarkers() {
 clearMarkers();
 markers = [];
-gdr.setMap(null);
-
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay, originate, endpoint) {
@@ -98,8 +92,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, originat
 	directionsDisplay.setMap(map);
 	
 	  directionsService.route({
-	    origin: originate,
-	    destination: endpoint,
+	    origin: endpoint,
+	    destination: originate,
 	    travelMode: google.maps.TravelMode.DRIVING
 	  }, function(response, status) {
 	    if (status === google.maps.DirectionsStatus.OK) {
@@ -110,30 +104,16 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, originat
 	  });
 	}
 
-
-
 //Adds a marker to the map and push to the array.
-function addMarker(location,timestamp,cid,type) {
+function addMarker(location,timestamp) {
 
 var marker = new google.maps.Marker({
   position: location,
   map: map
 });
-
-marker['infowindow'] = new google.maps.InfoWindow({
-    content: "Customer ID: "+cid+"\n Request Time: "+timestamp
-});
-
-google.maps.event.addListener(marker, 'mouseover', function() {
-this['infowindow'].open(map, this);
-});
-
-marker.addListener('click', function() {
-    calculateAndDisplayRoute(gds,gdr,new google.maps.LatLng(englat,englong),location);
-  });
-
 //new google.maps.InfoWindow({content:timestamp}).open(map,marker);
 
+calculateAndDisplayRoute(new google.maps.DirectionsService,new google.maps.DirectionsRenderer,location,new google.maps.LatLng(englat,englong));
 markers.push(marker);
 }
 

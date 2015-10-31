@@ -19,6 +19,8 @@
 	var act="<%=activecounts%>";
 	var que="<%=queuecounts%>";
 	var newc="<%=newcounts%>";
+	var englat="";
+	var englong="";
 	</script>
 	<link rel="stylesheet" href="themes/seenu1.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
@@ -52,7 +54,7 @@
 	}).done(function(data)
 			{
 		var customers = eval('('+data+')');
-			alert(customers.length+" customers fetched");
+			//alert(customers.length+" customers fetched");
 			if(customers.length==0)
 			{
 			alert("No Customers Available");
@@ -60,8 +62,8 @@
 			}	
 			for(i=0;i<customers.length;i++)
 			{
-			addMarker( new google.maps.LatLng(customers[i].CUSTOMER_LAT,customers[i].CUSTOMER_LONG),customers[i].REQUEST_TIME);
-			alert(customers[i].CUSTOMER_LAT+":"+customers[i].CUSTOMER_LONG);
+			addMarker( new google.maps.LatLng(customers[i].CUSTOMER_LAT,customers[i].CUSTOMER_LONG),customers[i].REQUEST_TIME,customers[i].CUSTOMER_ID,customers[i].EXPERT_IN);
+			//alert(customers[i].CUSTOMER_LAT+":"+customers[i].CUSTOMER_LONG);
 			}
 			showMarkers();
 			});

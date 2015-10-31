@@ -86,10 +86,10 @@ public class DBOperation {
 		Connection conn = SQLManager.openConnection();
 		try {
 			Statement st = conn.createStatement(); 
-			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED='N' AND CUSTOMER_ID='"+custid+"'"); 
+			ResultSet res = st.executeQuery("SELECT REQUEST_ID FROM REQUEST WHERE IS_ACCEPTED IN ('Y','N') AND CUSTOMER_ID='"+custid+"'"); 
 			while (res.next()) { 
 				reqid = res.getString("REQUEST_ID");
-				System.out.println("Req ID: "+ reqid);
+				System.out.println("getRequestOfCustomerID::Req ID: "+ reqid);
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,6 +97,34 @@ public class DBOperation {
 			SQLManager.closeConnection(conn);
 		}
 		return reqid;
+	}
+	
+	public List<LinkedHashMap<String,String>> getRequestDetailsOfCustomer(String reqid){
+		List<LinkedHashMap<String,String>> request=new ArrayList<LinkedHashMap<String,String>>();
+		Connection conn = SQLManager.openConnection();
+		try {
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT REQUEST_ID,CUSTOMER_ID,ENGINEER_ID,IS_ACCEPTED,REQUEST_TIME,EXPERT_IN,CUSTOMER_LAT,CUSTOMER_LONG FROM REQUEST WHERE REQUEST_ID='"+reqid+"'");
+			System.out.println("Executed Query"+res);
+			while (res!=null&&res.next()) { 
+				LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
+				rowdata.put("REQUEST_ID",res.getString("REQUEST_ID"));
+				System.out.println(res.getString("REQUEST_ID"));
+				rowdata.put("CUSTOMER_ID",res.getString("CUSTOMER_ID"));
+				rowdata.put("ENGINEER_ID",res.getString("ENGINEER_ID"));
+				rowdata.put("IS_ACCEPTED",res.getString("IS_ACCEPTED"));
+				rowdata.put("REQUEST_TIME",res.getString("REQUEST_TIME"));
+				rowdata.put("EXPERT_IN",res.getString("EXPERT_IN"));
+				rowdata.put("CUSTOMER_LAT",res.getString("CUSTOMER_LAT"));
+				rowdata.put("CUSTOMER_LONG",res.getString("CUSTOMER_LONG"));
+				request.add(rowdata);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return request;
 	}
 	
 	public List<LinkedHashMap<String,String>> getCustomers(String type,String id)
@@ -330,5 +358,30 @@ public class DBOperation {
 			SQLManager.closeConnection(conn);
 		}
 	}
+	
+	public List<LinkedHashMap<String,String>> getEngPosition(String enggid){
+		List<LinkedHashMap<String,String>> engpos=new ArrayList<LinkedHashMap<String,String>>();
+		Connection conn = SQLManager.openConnection();
+		try {
+			Statement st = conn.createStatement(); 
+			ResultSet res = st.executeQuery("SELECT LATITUDE,LONGITUDE FROM ENGINEER WHERE RECORD_ID='"+enggid+"'");
+			System.out.println("Executed Query"+res);
+			while (res!=null&&res.next()) { 
+				LinkedHashMap<String,String> rowdata=new LinkedHashMap<String,String>();
+
+				rowdata.put("LATITUDE",res.getString("LATITUDE"));
+				rowdata.put("LONGITUDE",res.getString("LONGITUDE"));
+				engpos.add(rowdata);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			SQLManager.closeConnection(conn);
+		}
+		return engpos;
+	}
+	
+	
+	
 	
 }

@@ -1,20 +1,40 @@
 <%@ page import="com.thegutsyninjas.*" %>
-
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%
   DBOperation db = new DBOperation();
   int requstId =0;
+  String custId=null; 
+  String expertIn=null; 
+  String _lat=null;
+  String _long=null;
+  String reqtime=null;
+  String tech_id=null;
+  String reqstatus=null;
   String action = request.getParameter("action");
   if(action!=null &&  action.equals("need")){
-  	String custId = request.getParameter("custId");
-    String expertIn = request.getParameter("expertIn");
-  	String _lat = request.getParameter("_lat");
-  	String _long = request.getParameter("_long");
+  	custId = request.getParameter("custId");
+    expertIn = request.getParameter("expertIn");
+  	_lat = request.getParameter("_lat");
+  	_long = request.getParameter("_long");
   	System.out.println(custId+":"+ _lat+":"+_long);
   	requstId = db.insertRequest(custId, expertIn, _lat, _long);
   	System.out.println("Request inserted successfully");
   }else{
   		// load information
   		requstId=Integer.parseInt(request.getParameter("rid"));
+  		String reqid=request.getParameter("rid");
+  		List<LinkedHashMap<String,String>> englist=db.getRequestDetailsOfCustomer(reqid);
+  		System.out.println("Records::"+englist.size());
+  		LinkedHashMap<String,String> customerrequest = englist.get(0);
+  		custId = customerrequest.get("CUSTOMER_ID");
+  	    expertIn = customerrequest.get("EXPERT_IN");
+  	  	_lat = customerrequest.get("CUSTOMER_LAT");
+  	  	_long = customerrequest.get("CUSTOMER_LONG");
+  	  reqtime = customerrequest.get("REQUEST_TIME");
+  	  tech_id=customerrequest.get("ENGINEER_ID");
+  	reqstatus=customerrequest.get("IS_ACCEPTED");
+  	System.out.println(custId+""+expertIn+""+_lat);
   }
  %>
 <html>
@@ -28,9 +48,19 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="engineertrackingmap.js"></script>
 	<script>
+	var engid="<%=tech_id%>";
+	var status="<%=reqstatus%>";
 		$(document).ready(function(){
 		
+			
+			$("#maptrack").click(function(){
+				if(status=="Y")
+					{
+				initialize();
+					}
+			});
 		
 		});	
 	</script>
@@ -52,19 +82,41 @@
 	      <div data-role="collapsible">
 	        <h3>Your Request</h3>
 	        <p>Request number is <span style="font-weight:bold;color:green;font-size:20px">#<%=requstId %></span></p>
+	        <h3>Your Info</h3>
+	        <p>Alex Daniels</p>
+	        <p>Customer ID: 1</p>
+	        <p>Technician Requested: <%= expertIn %></p>
+	        <%if(action==null) {%>
+	        <p>Request Time: <%= reqtime %></p>
+	        <%} %>
 	      </div>
 	      <div data-role="collapsible">
 	        <h3>Engineer Info</h3>
-	        <p>Bob Murge</p>
+	        
+	        <%if(reqstatus.equals("N")) {%>
+	        	<p>An Engineer will be assigned to you shortly</p>
+	         <%}else{ %>
+	         <p>Bob Murge</p>
 	        <p>Fios Technician Export</p>
 	         <p>#34 North Street, NJ</p>
 	         <p>Ph : 123-456-7890</p>
-	      </div>
-	      <div data-role="collapsible">
-	        <h3>Track</h3>
-	        <p>google map goes here</p>
+	         
+	         <%
+	         }
+	        %>
 	      </div>
 	      
+	       <div data-role="collapsible">
+	        <h3 id="maptrack">Track</h3>
+	        <%if(reqstatus.equals("N")) {%>
+	        	<p>An Engineer will be assigned to you shortly</p>
+	         <%}else{ %>
+	         <div data-role="main" class="ui-content" id="googleMap" style="width:100%;height:380px;">    
+ 			 </div>
+	         
+	         <%} %>
+
+	      </div>
    		</div>
     
   </div>

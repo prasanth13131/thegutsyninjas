@@ -42,6 +42,16 @@
 
     	
     }
+    else if(ajaxreq!=null&&ajaxreq.equalsIgnoreCase("getEngPosition")){
+    	DBOperation db = new DBOperation();  
+    	String engid=request.getParameter("enggId");
+   	List<LinkedHashMap<String,String>> engpos=db.getEngPosition(engid);
+    	response.setHeader("Cache-Control", "no-cache");
+    	response.getWriter().print(JSONArray.fromObject(engpos));
+    	
+
+    	
+    }
     
     
     %>

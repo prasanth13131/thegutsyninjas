@@ -33,6 +33,8 @@ String CUSTOMER_ID=customerrequest.get("CUSTOMER_ID");
 		
 			$('#update-serviced').click(function(){
 				
+				if($("input[name='act']:checked").val()=="yes")
+				{
 				
 				$.ajax({
 					url: 'fetchEngineeersAction.jsp',
@@ -48,6 +50,8 @@ String CUSTOMER_ID=customerrequest.get("CUSTOMER_ID");
 							{
 						alert("Service Ticket Closed");
 							});
+				
+				}
 
 					var url = "engineer.jsp";
 					$(this).attr("href",url);

@@ -10,7 +10,7 @@
   String _long=null;
   String reqtime=null;
   String tech_id=null;
-  String reqstatus="B";
+  String reqstatus="N";
   String action = request.getParameter("action");
   if(action!=null &&  action.equals("need")){
   	custId = request.getParameter("custId");

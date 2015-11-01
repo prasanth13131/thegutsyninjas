@@ -85,6 +85,7 @@
 	        <h3>Your Info</h3>
 	        <p>Alex Daniels</p>
 	        <p>Customer ID: 1</p>
+	        <p>Contact No: 123-456-7890</p>
 	        <p>Technician Requested: <%= expertIn %></p>
 	        <%if(action==null) {%>
 	        <p>Request Time: <%= reqtime %></p>
@@ -95,9 +96,10 @@
 	        
 	        <%if(reqstatus.equals("N")) {%>
 	        	<p>An Engineer will be assigned to you shortly</p>
+	        	<p>Updates will be sent to 123-456-7890, e-mail updates to alex@mail.com</p>
 	         <%}else{ %>
-	         <p>Bob Murge</p>
-	        <p>Fios Technician Export</p>
+	         <p>Bob Kalib</p>
+	        <p>Fios Expert</p>
 	         <p>#34 North Street, NJ</p>
 	         <p>Ph : 123-456-7890</p>
 	         
@@ -109,7 +111,7 @@
 	       <div data-role="collapsible">
 	        <h3 id="maptrack">Track</h3>
 	        <%if(reqstatus.equals("N")) {%>
-	        	<p>An Engineer will be assigned to you shortly</p>
+	        	<p>You can track your engineer here once assigned</p>
 	         <%}else{ %>
 	         <div data-role="main" class="ui-content" id="googleMap" style="width:100%;height:380px;">    
  			 </div>
@@ -124,7 +126,7 @@
   <div data-role="footer">
   </div>
   <div id="login_button_holder" style="text-align:center">
-    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
+Â    <img src="images/newverizonlogoofficiallarge.png" width="160" height="100">
 </div>
 </div>
 </form>

@@ -280,7 +280,7 @@ public class DBOperation {
 	     
 		      preparedStmt.setString(1, lat);
 		      preparedStmt.setString(2, longi);
-		      preparedStmt.setString(3, longi);
+		      preparedStmt.setString(3, eid);
 		      
 		      System.out.println(preparedStmt.executeUpdate());
 
